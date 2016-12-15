@@ -6,14 +6,13 @@ This will build a gnuradion OOT (out-of-tree) module to encode and decode an aud
 
 It uses the Northwest Digital Radio ThumbDV(tm) AMBE-3000 dongle (http://www.nwdigitalradio.com) to encode and decode between audio and encoded data using either the DStar or DMR vocoder (many other vocoders are available on the AMBE-3000 chip and could be easily added to this OOT). The encoder builds an ecoded data stream from an 8000 sample/second, 16-bit integer audio stream. The decoder converts the encoded data stream back to a 8000 sample/second, 16-bit integer audio stream. 160 16-bit voice sample produce 9 bytes of encoded data and vis-versa.
 
-Be sure to look in the "examples" folder for flow-graphs that make a 16-bit audio file and then use that file to make (and then decode) an encoded stream file.
+Be sure to look in the "examples" folder for flow-graphs that make a 16-bit audio file and then use that file to make (and then decode) an encoded stream file. A "bare-bones" DStar transmitter flow-graph is also included.
 
-These block don't provide *any* other processing. If you are interested in DStar coded streams that also provide "slow data", headers and syncronization, see my other repository at https://github.com/ac2ie/gr-ambe3000.
+These En/Decode blocks don't provide *any* other processing. If you are interested in DStar coded streams that also provide "slow data", headers and syncronization, see my other repository at https://github.com/ac2ie/gr-ambe3000.
 
-Please note that these raw streams are not DStar or DMR radio compatible streams as they only contain the voice data. To properly interact with commercial radios, additional blocks would be needed to be supply additional data for slow data,
-headers, syncronization, termination, etc. (See "Other Stuff" below.)
+Please note that these raw streams are not DStar or DMR radio compatible streams as they only contain the voice data. To properly interact with commercial radios, additional blocks would be needed to be supply additional data for slow data, headers, syncronization, termination, etc. However, as stated earlier, it is easy to create a "bare-bones" DStar transmitter with just a few additional standard gnuradio blocks.
 
-##Installation
+## Installation
 
 Change to any folder in your home directory and enter following commands in your terminal.
 ```
@@ -30,7 +29,7 @@ The "path_to_gnuradio_base" can be found with the command:
 gnuradio-config-info --prefix
 ```
 
-##Updating
+## Updating
 
 Go to the gr-ThumbDV directory and pull any new stuff with `git pull`. If new files are downloaded, the safest thing to do uninstall, rebuild and reinstall:
 ```
@@ -41,7 +40,7 @@ rm -r build
 ```
 and then complete the rebuild at the `mkdir build` command from the "Installation" section.
 
-##Uninstall
+## Uninstall
 
 If you don't want the ThumbDV blocks anymore, go back to the build directory and...
 ```
@@ -49,12 +48,12 @@ sudo make uninstall
 ```
 After removal, you can go to the parent directory of gr-ThumbDV and safely remove the gr-ThumbDV directory.
 
-##Other Stuff
+## Other Stuff
 
-It is my intention to add additional gnuradio blocks to this OOT that will, when properly connected, build functional DStar and DMR receivers and transmitters. I welcome comments and complaints, but moslty I welcome push notifications for improvements.
+It is my intention to add additional gnuradio blocks to this OOT that will, when properly connected, build fully functional DStar and DMR receivers and transmitters. I welcome comments and complaints, but moslty I welcome push notifications for improvements.
 
 Thanks to the folks at NorthWest Digital Radio (especially for their ambeserver.c). If you find this software useful, it's because of them. If you don't, you can blame me!
 
-##73
+## 73
 
 Tom AC2IE - ac2ie(at)arrl(dot)net
