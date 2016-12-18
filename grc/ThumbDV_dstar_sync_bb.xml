@@ -1,41 +1,16 @@
 <?xml version="1.0"?>
 <block>
-  <name>AMBE Encode</name>
-  <key>ThumbDV_Encode_sb</key>
+  <name>DStar Sync</name>
+  <key>ThumbDV_dstar_sync_bb</key>
   <category>[ThumbDV]</category>
   <import>import ThumbDV</import>
-  <make>ThumbDV.Encode_sb($device, $baudrate, $dvtype)</make>
+  <make>ThumbDV.dstar_sync_bb()</make>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name
        * key (makes the value accessible as $keyname, e.g. in the make node)
        * type -->
-
-  <param>
-    <name>device</name>
-    <key>device</key>
-    <value>/dev/ttyUSB0</value>
-    <type>string</type>
-  </param>
-  
-  <param>
-    <name>baudrate</name>
-    <key>baudrate</key>
-    <value>230400</value>
-    <type>int</type>
-    <option><name>230400</name><key>230400</key></option>
-    <option><name>460800</name><key>460800</key></option>
-  </param>
-  
-  <param>
-    <name>dvtype</name>
-    <key>dvtype</key>
-    <value>0</value>
-    <type>int</type>
-    <option><name>DStar</name><key>0</key></option>
-    <option><name>DMR</name><key>1</key></option>
-  </param>
-
+ 
   <!-- Make one 'sink' node per input. Sub-nodes:
        * name (an identifier for the GUI)
        * type
@@ -43,7 +18,7 @@
        * optional (set to 1 for optional inputs) -->
   <sink>
     <name>in</name>
-    <type>short</type>
+    <type>byte</type>
   </sink>
 
   <!-- Make one 'source' node per output. Sub-nodes:
@@ -52,7 +27,11 @@
        * vlen
        * optional (set to 1 for optional inputs) -->
   <source>
-    <name>out</name>
+    <name>voice</name>
+    <type>byte</type>
+  </source>
+  <source>
+    <name>data</name>
     <type>byte</type>
   </source>
 </block>

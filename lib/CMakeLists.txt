@@ -28,7 +28,11 @@ link_directories(${Boost_LIBRARY_DIRS})
 list(APPEND ThumbDV_sources
     Encode_sb_impl.cc
     Decode_bs_impl.cc
+    dstar_sync_bb_impl.cc
     DV3000U.cc
+    DStarDemux.cc
+    SyncRegister.cc
+    DStarHeader.cc
 )
 
 set(ThumbDV_sources "${ThumbDV_sources}" PARENT_SCOPE)

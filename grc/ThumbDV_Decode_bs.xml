@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <block>
-  <name>Decode</name>
+  <name>AMBE Decode</name>
   <key>ThumbDV_Decode_bs</key>
   <category>[ThumbDV]</category>
   <import>import ThumbDV</import>

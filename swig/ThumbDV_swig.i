@@ -10,6 +10,7 @@
 %{
 #include "ThumbDV/Encode_sb.h"
 #include "ThumbDV/Decode_bs.h"
+#include "ThumbDV/dstar_sync_bb.h"
 %}
 
 
@@ -17,3 +18,5 @@
 GR_SWIG_BLOCK_MAGIC2(ThumbDV, Encode_sb);
 %include "ThumbDV/Decode_bs.h"
 GR_SWIG_BLOCK_MAGIC2(ThumbDV, Decode_bs);
+%include "ThumbDV/dstar_sync_bb.h"
+GR_SWIG_BLOCK_MAGIC2(ThumbDV, dstar_sync_bb);

@@ -23,5 +23,6 @@
 install(FILES
     api.h
     Encode_sb.h
-    Decode_bs.h DESTINATION include/ThumbDV
+    Decode_bs.h
+    dstar_sync_bb.h DESTINATION include/ThumbDV
 )
