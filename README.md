@@ -8,9 +8,7 @@ It uses the Northwest Digital Radio ThumbDV(tm) AMBE-3000 dongle (http://www.nwd
 
 Be sure to look in the "examples" folder for flow-graphs that make a 16-bit audio file and then use that file to make (and then decode) an encoded stream file. A "bare-bones" DStar transmitter flow-graph is also included.
 
-These En/Decode blocks don't provide *any* other processing. If you are interested in DStar coded streams that also provide "slow data", headers and syncronization, see my other repository at https://github.com/ac2ie/gr-ambe3000.
-
-Please note that these raw streams are not DStar or DMR radio compatible streams as they only contain the voice data. To properly interact with commercial radios, additional blocks would be needed to be supply additional data for slow data, headers, syncronization, termination, etc. However, as stated earlier, it is easy to create a "bare-bones" DStar transmitter with just a few additional standard gnuradio blocks.
+The **AMBE Encode** and **AMBE Decode** blocks don't provide *any* other processing. A "bare-bones" DStar transmitter can be constructed with the **MBE Encode** block and a collection of standard gnuradio block. The **DStar Sync** and **DStar Slow Data Sink** blocks are can be used in combination with ABME Decode to build a complete DStar receiver. See the included example flow-graphs.
 
 ## Installation
 
