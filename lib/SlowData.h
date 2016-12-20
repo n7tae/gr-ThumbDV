@@ -24,13 +24,14 @@ public:
 	CSlowData();
 	~CSlowData();
 	void Add(const unsigned char *c);
-//	void SetHeader(const char *h);
+	void ClearType3();
 	void Reset();
 private:
-	enum { nomode, mode4, mode5 } currentmode;
+	enum { nomode, mode3, mode4, mode5 } currentmode;
 	int m_headcount;
 	unsigned char m_buffer[6];
-	char m_header[45], m_lastheader[45];
-	char m_message[20], m_lastmessage[21];
+	char m_header[45];
+	char m_message[20];
+	char m_type3[100];
 	void PrintHeader();
 };

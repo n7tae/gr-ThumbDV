@@ -64,8 +64,6 @@ CSlowData::CSlowData()
 {
 	currentmode = nomode;
 	Reset();
-	memset(m_lastheader, 0, 45);
-	memset(m_lastmessage, 0, 20);
 }
 
 CSlowData::~CSlowData()
@@ -78,6 +76,12 @@ void CSlowData::Reset()
 	m_headcount = 0;
 	std::memset(m_header, 0, 45);
 	std::memset(m_message, 0, 20);
+	ClearType3();
+}
+
+void CSlowData::ClearType3()
+{
+	std::memset(m_type3, 0, 100);
 }
 
 void CSlowData::Add(const unsigned char *c)
@@ -94,6 +98,22 @@ void CSlowData::Add(const unsigned char *c)
 	if (count > 5) return;
 
 	switch (key) {
+		case 3:
+			if (currentmode != mode3) {
+				Reset();
+				currentmode = mode3;
+			}
+			if (std::strlen(m_type3) > 94) break;
+			std::memcpy(m_type3 + std::strlen(m_type3), m_buffer + 1, count);
+			if (5 != count) {
+				// trim trailing whitespace
+				int last = std::strlen(m_type3) - 1;
+				while (std::isspace(m_type3[last]))
+					m_type3[last--] = (char)0;
+				std::printf("%s\n", m_type3);
+				ClearType3();
+			}
+			break;
 		case 4:
 			if (currentmode != mode4) {
 				Reset();
@@ -112,10 +132,7 @@ void CSlowData::Add(const unsigned char *c)
 				for (int i=0; i<20; i++)
 					if (' ' == m_message[i])
 						m_message[i] = '_';
-				if (memcmp(m_message, m_lastmessage, 20)) {
-					std::printf("Message: %20.20s\n", m_message);
-					memcpy(m_lastmessage, m_message, 20);
-				}
+				std::printf("Message: %20.20s\n", m_message);
 				Reset();
 			}
 			break;
@@ -129,14 +146,12 @@ void CSlowData::Add(const unsigned char *c)
 				for (int i=3; i<39; i++)
 					if (' ' == m_header[i])
 						m_header[i] = '_';
-				if (memcmp(m_header, m_lastheader, 39)) {
-					memcpy(m_lastheader, m_header, 39);
-					PrintHeader();
-				}
+				PrintHeader();
 				Reset();
 			}
 			break;
 		default:
+			currentmode = nomode;
 			Reset();
 			break;
 	}
