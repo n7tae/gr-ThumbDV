@@ -40,7 +40,7 @@ CDStarDemux::~CDStarDemux()
 
 int CDStarDemux::Process(const unsigned char *in, unsigned char *voice, unsigned char *data, int &outcount)
 {
-	int rvalue = 0;
+	int ret = 0;
 	for (int inp=0; inp<96; inp++) {
 		unsigned char bit = in[inp];
 		if (headmode == readmode) {
@@ -79,6 +79,9 @@ int CDStarDemux::Process(const unsigned char *in, unsigned char *voice, unsigned
 					if (this_frame_is_sync) {
 						printf("Voice frame %d is an unexpected sync frame\n", thisvoiceframe);
 						frame_is_ready = false;
+					} else {
+						memcpy(data, buffer+9, 3);
+						ret += 3;
 					}
 				} else {
 					// should be a sync voice frame
@@ -88,10 +91,7 @@ int CDStarDemux::Process(const unsigned char *in, unsigned char *voice, unsigned
 						frame_is_ready = false;
 					}
 				}
-				if (frame_is_ready) {
-					memcpy(data, buffer+9, 3);
-					rvalue += 3;
-				} else {
+				if (! frame_is_ready) {
 					readmode = nullmode;
 					voiceframecount = 0;
 				}
@@ -136,5 +136,5 @@ int CDStarDemux::Process(const unsigned char *in, unsigned char *voice, unsigned
 		memset(voice, 0x00u, outcount);
 	}
 
-	return rvalue;
+	return ret;
 }

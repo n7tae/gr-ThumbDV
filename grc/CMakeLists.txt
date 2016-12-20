@@ -20,5 +20,6 @@
 install(FILES
     ThumbDV_Encode_sb.xml
     ThumbDV_Decode_bs.xml
-    ThumbDV_dstar_sync_bb.xml DESTINATION share/gnuradio/grc/blocks
+    ThumbDV_dstar_sync_bb.xml
+    ThumbDV_dstar_data_sink_b.xml DESTINATION share/gnuradio/grc/blocks
 )

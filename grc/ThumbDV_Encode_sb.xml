@@ -2,7 +2,7 @@
 <block>
   <name>AMBE Encode</name>
   <key>ThumbDV_Encode_sb</key>
-  <category>[ThumbDV]</category>
+  <category>[AMBE-3000]</category>
   <import>import ThumbDV</import>
   <make>ThumbDV.Encode_sb($device, $baudrate, $dvtype)</make>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.

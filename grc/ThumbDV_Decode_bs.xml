@@ -2,7 +2,7 @@
 <block>
   <name>AMBE Decode</name>
   <key>ThumbDV_Decode_bs</key>
-  <category>[ThumbDV]</category>
+  <category>[AMBE-3000]</category>
   <import>import ThumbDV</import>
   <make>ThumbDV.Decode_bs($device, $baudrate, $dvtype)</make>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.

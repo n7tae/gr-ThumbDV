@@ -29,10 +29,12 @@ list(APPEND ThumbDV_sources
     Encode_sb_impl.cc
     Decode_bs_impl.cc
     dstar_sync_bb_impl.cc
+    dstar_data_sink_b_impl.cc
     DV3000U.cc
     DStarDemux.cc
     SyncRegister.cc
     DStarHeader.cc
+    SlowData.cc
 )
 
 set(ThumbDV_sources "${ThumbDV_sources}" PARENT_SCOPE)

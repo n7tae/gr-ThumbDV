@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <block>
-  <name>DStar Sync</name>
-  <key>ThumbDV_dstar_sync_bb</key>
+  <name>DStar Slow Data Sink</name>
+  <key>ThumbDV_dstar_data_sink_b</key>
   <category>[AMBE-3000]</category>
   <import>import ThumbDV</import>
-  <make>ThumbDV.dstar_sync_bb()</make>
+  <make>ThumbDV.dstar_data_sink_b()</make>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name
        * key (makes the value accessible as $keyname, e.g. in the make node)
        * type -->
- 
-  <!-- Make one 'sink' node per input. Sub-nodes:
+   <!-- Make one 'sink' node per input. Sub-nodes:
        * name (an identifier for the GUI)
        * type
        * vlen
@@ -20,18 +19,4 @@
     <name>in</name>
     <type>byte</type>
   </sink>
-
-  <!-- Make one 'source' node per output. Sub-nodes:
-       * name (an identifier for the GUI)
-       * type
-       * vlen
-       * optional (set to 1 for optional inputs) -->
-  <source>
-    <name>voice</name>
-    <type>byte</type>
-  </source>
-  <source>
-    <name>data</name>
-    <type>byte</type>
-  </source>
 </block>
