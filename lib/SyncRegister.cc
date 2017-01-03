@@ -44,7 +44,7 @@ void CSyncRegister::Push(const unsigned char in)
 
 bool CSyncRegister::IsHeadSync()
 {
-	return data[2]==0x55555555u && data[1]==0x55555555u && data[0]==0x55557650u;
+	return /*data[2]==0x55555555u &&*/ data[1]==0x55555555u && data[0]==0x55557650u;
 }
 
 bool CSyncRegister::IsDataSync()

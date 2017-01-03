@@ -69,8 +69,19 @@ namespace gr {
 
 			// Do <+signal processing+>
 			for (int i=0; i<noutput_items; i+=160) {
-				if (dv3000u.DecodeData(in, out))
-					return WORK_DONE;	// there was a problem
+				bool zeros = true;
+				for (int j=0; j<9; j++) {
+					if (in[j]) {
+						zeros = false;
+						break;
+					}
+				}
+				if (zeros) {
+					memset(out, 0, 160*sizeof(short int));
+				} else {
+					if (dv3000u.DecodeData(in, out))
+						return WORK_DONE;	// there was a problem
+				}
 				in += 9;
 				out += 160;
 			}

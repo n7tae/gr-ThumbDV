@@ -723,7 +723,7 @@
     </param>
     <param>
       <key>fc</key>
-      <value>0</value>
+      <value>freq-offset</value>
     </param>
     <param>
       <key>comment</key>
@@ -747,7 +747,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(208, 148)</value>
+      <value>(192, 148)</value>
     </param>
     <param>
       <key>gui_hint</key>

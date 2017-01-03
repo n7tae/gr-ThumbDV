@@ -40,6 +40,17 @@ CDStarDemux::~CDStarDemux()
 
 int CDStarDemux::Process(const unsigned char *in, unsigned char *voice, unsigned char *data, int &outcount)
 {
+	if (frame_is_ready) {
+		memcpy(voice, buffer, 9);
+		frame_is_ready = false;
+	} else {
+		if (first_time) {
+			outcount = 27;
+			first_time = false;
+		}
+		memset(voice, 0x00u, outcount);
+	}
+	
 	int ret = 0;
 	for (int inp=0; inp<96; inp++) {
 		unsigned char bit = in[inp];
@@ -124,17 +135,6 @@ int CDStarDemux::Process(const unsigned char *in, unsigned char *voice, unsigned
 			}
 		}
 	}	// for loop over 96 input bits
-	
-	if (frame_is_ready) {
-		memcpy(voice, buffer, 9);
-		frame_is_ready = false;
-	} else {
-		if (first_time) {
-			outcount = 18;
-			first_time = false;
-		}
-		memset(voice, 0x00u, outcount);
-	}
 
 	return ret;
 }
