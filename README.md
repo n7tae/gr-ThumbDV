@@ -10,6 +10,12 @@ Be sure to look in the "examples" folder for flow-graphs that make a 16-bit audi
 
 The **AMBE Encode** and **AMBE Decode** blocks don't provide *any* other processing. A "bare-bones" DStar transmitter can be constructed with the **MBE Encode** block and a collection of standard gnuradio block. The **DStar Sync** and **DStar Slow Data Sink** blocks are can be used in combination with ABME Decode to build a complete DStar receiver. See the included example flow-graphs.
 
+Because these ambe devices communicate through a /dev/tty* device, make sure you are in the `dialout` group:
+```
+sudo adduser <user> dialout
+```
+where `<user>` is your username. After you logout and log back in, you can use the device without problems.
+
 ## Installation
 
 Change to any folder in your home directory and enter following commands in your terminal.
