@@ -20,7 +20,7 @@ where `<user>` is your username. After you logout and log back in, you can use t
 
 Change to any folder in your home directory and enter following commands in your terminal.
 ```
-git clone https://github.com/ac2ie/gr-ThumbDV.git
+git clone https://github.com/n7tae/gr-ThumbDV.git
 cd gr-ThumbDV/ 
 mkdir build
 cd build/
@@ -60,4 +60,4 @@ Thanks to the folks at NorthWest Digital Radio (especially for their ambeserver.
 
 ## 73
 
-Tom AC2IE - ac2ie(at)arrl(dot)net
+Tom - n7tae(at)arrl(dot)net
