@@ -8,7 +8,7 @@ It uses the Northwest Digital Radio ThumbDV(tm) AMBE-3000 dongle (http://www.nwd
 
 Be sure to look in the "examples" folder for flow-graphs that make a 16-bit audio file and then use that file to make (and then decode) an encoded stream file. A "bare-bones" DStar transmitter flow-graph is also included.
 
-The **AMBE Encode** and **AMBE Decode** blocks don't provide *any* other processing. A "bare-bones" DStar transmitter can be constructed with the **MBE Encode** block and a collection of standard gnuradio block. The **DStar Sync** and **DStar Slow Data Sink** blocks are can be used in combination with ABME Decode to build a complete DStar receiver. See the included example flow-graphs.
+The **AMBE Encode** and **AMBE Decode** blocks don't provide *any* other processing. A "bare-bones" DStar transmitter can be constructed with the **AMBE Encode** block and a collection of standard gnuradio block. The **DStar Sync** and **DStar Slow Data Sink** blocks are can be used in combination with **ABME Decode** to build a complete DStar receiver. See the included example flow-graphs.
 
 Because these ambe devices communicate through a /dev/tty* device, make sure you are in the `dialout` group:
 ```
@@ -21,7 +21,7 @@ where `<user>` is your username. After you logout and log back in, you can use t
 Change to any folder in your home directory and enter following commands in your terminal.
 ```
 git clone https://github.com/n7tae/gr-ThumbDV.git
-cd gr-ThumbDV/ 
+cd gr-ThumbDV/
 mkdir build
 cd build/
 cmake -DCMAKE_INSTALL_PREFIX=path_to_gnuradio_base ../
